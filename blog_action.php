@@ -81,7 +81,7 @@
                     ?>
                     <div class="page-header clearfix">
                         
-                        <a href="blog_display.html" class="btn btn-success pull-right">Back</a>
+                        <a href="blog_display2.php" class="btn btn-success pull-right">Back</a>
                     </div>
                 </div>
             </div>        
