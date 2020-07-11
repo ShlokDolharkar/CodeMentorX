@@ -2,12 +2,15 @@
 // Process delete operation after confirmation
 if(isset($_POST["id"]) && !empty($_POST["id"])){
     // Include config file
-    require_once "config.php";
-    
+    include("./connection.php");
+
+		$blog_Content = trim($_POST["blog_text"]);
+		$blog_Title = trim($_POST["blog_title"]);
     // Prepare a delete statement
-    $sql = "DELETE FROM blog WHERE id = ?";
+	
+    $sql = "UPDATE blog SET blog_title = $blog_Title, blog_text = $blog_Content WHERE id = ?";
     
-    if($stmt = mysqli_prepare($link, $sql)){
+    if($stmt = mysqli_prepare($connect, $sql)){
         // Bind variables to the prepared statement as parameters
         mysqli_stmt_bind_param($stmt, "i", $param_id);
         
@@ -17,7 +20,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         // Attempt to execute the prepared statement
         if(mysqli_stmt_execute($stmt)){
             // Records deleted successfully. Redirect to landing page
-            header("location: blog_action.php");
+            header("location: ../blog_action.php");
             exit();
         } else{
             echo "Oops! Something went wrong. Please try again later.";
@@ -28,7 +31,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     mysqli_stmt_close($stmt);
     
     // Close connection
-    mysqli_close($link);
+    mysqli_close($connect);
 } else{
     // Check existence of id parameter
     if(empty(trim($_GET["id"]))){
@@ -57,12 +60,12 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
             <div class="row">
                 <div class="col-md-12">
                     <div class="page-header">
-                        <h1>Delete Record</h1>
+                        <h1>UPdate Record</h1>
                     </div>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="alert alert-danger fade in">
                             <input type="hidden" name="id" value="<?php echo trim($_GET["id"]); ?>"/>
-                            <p>Are you sure you want to delete this record?</p><br>
+                            <p>Are you sure you want to update this record?</p><br>
                             <p>
                                 <input type="submit" value="Yes" class="btn btn-danger">
                                 <a href="blog_action.php" class="btn btn-default">No</a>

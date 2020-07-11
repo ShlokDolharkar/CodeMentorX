@@ -61,7 +61,7 @@ include("connection.php");
 
 			if($query){
 
-				echo "<script>alert('Congratulation $name, urs account has been created! ')</script>";
+				echo "<script>alert('Congratulation $name, your account has been created! ')</script>";
 
 				echo "<script>window.open('signin.php', '_self')</script>";
 

@@ -1,39 +1,23 @@
-<?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "codementor";
+<?php include('include/header.php'); ?>
+<?php include('include/navbar.php'); ?>
+		
+		<div class = "blog_only">
+		<form action="include/upload_blog_action.php" method="POST">
+			<textarea cols="100" rows="2" style="resize: none;" name="blog_title" placeholder=" blog-title..." required></textarea>
+			<br><br>
+			<div id="editor" class="editorClass" style="width: 90%;margin-left: 80px;">
+				<textarea name="blog_text" rows="5" cols="20" placeholder="Start writing here..."></textarea>
+			</div>
+			<br><br>
+			<button style="margin-left: 150px;font-size: 20px;" name="submit">Insert</button>
+		</form>
+		</div>
+					<script>
+                        CKEDITOR.replace( 'blog_text' );        
+						CKEDITOR.resize( '100%', '350', true )
+						//CKEDITOR.config.height = '100%';   // CSS unit (percent).
+						CKEDITOR.config.resize_enabled = false; 
+					</script>
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
-$blog_Content = trim($_POST["blog_content"]);
-$blog_Title = trim($_POST["blog_title"]);
-// ':blog_Content' == $blog_Content;
-
-$sql = "INSERT INTO blog (blog_title,blog_text)
-VALUES ('$blog_Title','$blog_Content')";
-
-if ($conn->query($sql) === TRUE) {
-  echo "New record created successfully";
-	//header('location : blog.html');
-} else {
-  echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-$conn->close();
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Record successfull</title>
-</head>
-<body>
-	<a href="blog_action.php">View All</a>
 </body>
 </html>
