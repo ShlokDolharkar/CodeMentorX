@@ -19,8 +19,8 @@
 				<h2>Sign Up</h2>
 				<p>Fill Form</p>
 			</div>
-			<div><input type="radio" name="user_type" value="teacher">Teacher
-			<input type="radio" name="user_type" value="student">Student
+			<div><input type="radio" onclick="myFunction()"  name="user_type" value="teacher">Teacher
+			<input type="radio" name="user_type" value="student" checked>Student
 			</div>
 			<div class="form-group">
 				<label>Username</label>
@@ -35,14 +35,26 @@
 				<input type="email" name="user_email" placeholder="someone@site.com" autocomplete="off" class="form-group" required>
 			</div>
 			<div class="form-group">
+				<label>Profile Picture</label>
+                     <input type="file" name="image" id="image" />
+                </div> 
+
+            <div class="form-group">
+				<label>Enter Your Best Friend Name</label>
+				<input type="text" name="forgotten_answer" placeholder="Naresh" autocomplete="off" class="form-group" required>
+			</div>
+			<div class="form-group">
 				<label class="checkbox-inline">
 					<input type="checkbox" required>
 					I accept the <a href="#">Terms of Use</a></label>
 			</div>
 			
+			
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary btn-block btn-lg" name="sign_up">Sign Up</button>
 			</div>
+
+			
 			<?php 
 			include("include/signup_user.php");
 			 ?>
@@ -54,3 +66,37 @@
 
 </body>
 </html>
+
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+<script>  
+ $(document).ready(function(){  
+      $('#sign_up').click(function(){  
+           var image_name = $('#image').val();  
+           if(image_name == '')  
+           {  
+                alert("Please Select Image");  
+                return false;  
+           }  
+           else  
+           {  
+                var extension = $('#image').val().split('.').pop().toLowerCase();  
+                if(jQuery.inArray(extension, ['gif','png','jpg','jpeg']) == -1)  
+                {  
+                     alert('Invalid Image File');  
+                     $('#image').val('');  
+                     return false;  
+                }  
+           }  
+      });  
+ });  
+ </script>  
