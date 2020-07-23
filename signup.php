@@ -19,8 +19,17 @@
 				<h2>Sign Up</h2>
 				<p>Fill Form</p>
 			</div>
-			<div><input type="radio" onclick="myFunction()"  name="user_type" value="teacher">Teacher
-			<input type="radio" name="user_type" value="student" checked>Student
+			<div>
+				<script type="text/javascript">
+                    function myFunction() {
+                    var chkYes = document.getElementById("chkYes");
+                    var dvPassport = document.getElementById("dvPassport");
+                    dvPassport.style.display = chkYes.checked ? "block" : "none";
+                    }
+                </script>
+
+				<input type="radio" id="chkYes" onclick="myFunction()"  name="user_type" value="teacher">Teacher
+			<input type="radio" id="chkNo" onclick="myFunction()" name="user_type" value="student" checked>Student
 			</div>
 			<div class="form-group">
 				<label>Username</label>
@@ -36,13 +45,32 @@
 			</div>
 			<div class="form-group">
 				<label>Profile Picture</label>
-                     <input type="file" name="image" id="image" />
+                     <input type="file" name="image" id="image" required />
                 </div> 
 
             <div class="form-group">
 				<label>Enter Your Best Friend Name</label>
 				<input type="text" name="forgotten_answer" placeholder="Naresh" autocomplete="off" class="form-group" required>
 			</div>
+
+			<div id="dvPassport" class="container" style="display: none">
+        <h1>Choose Skills</h1>
+        <div class="buttonC">
+            <!-- <a href="index2.html" class="btn">C</a>
+            <a href="#" class="btn">C++</a>
+            <a href="#" class="btn">JAVA</a>
+            <a href="#" class="btn">PYTHON</a>
+            <a href="#" class="btn">CURL</a> -->
+            
+              <input type="checkbox" name="lang2" value="C++">
+              <label for="C++"> C++</label><br>
+              <input type="checkbox" name="lang3" value="Java" >
+              <label for="Java"> Java</label><br>
+              <input type="checkbox" name="lang5" value="PYTHON">
+              <label for="PYTHON"> Python</label><br><br>
+              
+        </div>
+    </div>
 			<div class="form-group">
 				<label class="checkbox-inline">
 					<input type="checkbox" required>
@@ -59,6 +87,7 @@
 			include("include/signup_user.php");
 			 ?>
 		</form>
+
 		<div class="text-center small"> Alredy have an account
 		<a href="signin.php">Click here</a>
 		</div>
@@ -67,16 +96,7 @@
 </body>
 </html>
 
-<script>
-function myFunction() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-</script>
+
 
 <script>  
  $(document).ready(function(){  

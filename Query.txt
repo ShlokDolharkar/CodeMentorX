@@ -1,0 +1,4 @@
+SELECT a.user_name, a.user_email,a.user_id ,b.teacher_id FROM teacher_user a, teacher_skill b WHERE a.user_id = b.teacher_id AND Java='yes'
+
+
+<td><button type="button" class="btn btn-info btn-xs start_chat" data-touserid="'.$row['user_id'].'" data-tousername="'.$row['user_name'].'">Start Chat</button></td>

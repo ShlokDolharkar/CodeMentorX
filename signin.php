@@ -30,7 +30,7 @@
 				<input type="password" name="password" placeholder="Enter Password" autocomplete="off" class="form-group" required>
 			</div>
 			<div class="small">Forgot password?
-			<a href="forgot_pass.php">Click Here</a>
+			<a href="include/forgot_pass.php">Click Here</a>
 			</div>
 			<br>
 			<div class="form-group">
